@@ -1,11 +1,16 @@
 # HanLP vs LTP 分词功能测试
 
 ## 测试思路
-使用同一份语料训练两个分词库，同一份测试数据测试两个分词库的性能。        			 
-语料库选取1998年01月的人民日报语料库。资源[199801人民日报语料](https://github.com/hankcs/OpenCorpus/blob/master/pku98/199801.txt)             		
-该词库带有词性标注，为了遵循LTP的训练数据集格式，需要处理掉词性标注。               				 
+使用同一份语料训练两个分词库，同一份测试数据测试两个分词库的性能。               
+       			 
+语料库选取1998年01月的人民日报语料库。[199801人民日报语料](https://github.com/hankcs/OpenCorpus/blob/master/pku98/199801.txt)             
+             		
+该词库带有词性标注，为了遵循LTP的训练数据集格式，需要处理掉词性标注。                
+               				 
 测试数据选择[SIGHan2005](http://sighan.cs.uchicago.edu/bakeoff2005/)提供的开放测试集。                 
-SIGHan2005的使用可以参见其附带的readme。
+                
+SIGHan2005的使用可以参见其附带的readme。                
+
 
 ## HanLP
 
