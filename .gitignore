@@ -1,0 +1,5 @@
+.idea/**
+.idea/vcs.xmlg
+build/**
+out/**
+.gradle/**
