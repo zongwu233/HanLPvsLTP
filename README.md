@@ -181,3 +181,8 @@ total num:140315
 | HanLP | 15.68 s | 1375k/s |      |
 | LTP   | 53.68 s | 389k/s  |      |
 
+## 开源协议
+**Apache License Version 2.0**              
+## 致谢
+[HanLP](https://github.com/hankcs/HanLP)                
+[LTP](https://github.com/HIT-SCIR/ltp)
