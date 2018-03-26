@@ -10,7 +10,7 @@ SIGHan2005的使用可以参见其附带的readme。
 ## HanLP
 
 ```bash
-java -cp libs/hanlp-1.6.0.jar com.hankcs.hanlp.model.perceptron.Main -task CWS -train -reference /Users/zongwu/work/dataService/OpenCorpus/pku98/199801.txt -model data/test/perceptron/pku199801/cws.bin
+java -cp libs/hanlp-1.6.0.jar com.hankcs.hanlp.model.perceptron.Main -task CWS -train -reference ../OpenCorpus/pku98/199801.txt -model data/test/perceptron/pku199801/cws.bin
 
 ```
 默认情况下，训练的迭代次数为5。           
@@ -31,7 +31,7 @@ gradle clean build
 
 执行命令：                
 ```bash
-java -cp build/libs/test-hanlp-ltp-1.0-SNAPSHOT.jar  com.zongwu33.test.TestForSIGHan2005 /Users/zongwu/work/dataService/NLP/icwb2-data/testing/msr_test.utf8    segment-msr-result.txt
+java -cp build/libs/test-hanlp-ltp-1.0-SNAPSHOT.jar  com.zongwu33.test.TestForSIGHan2005 ../NLP/icwb2-data/testing/msr_test.utf8    segment-msr-result.txt
 
 ```
 将分词的结果生成到`segment-msr-result.txt`文件里。
