@@ -15,7 +15,11 @@ SIGHan2005的使用可以参见其附带的readme。
 ## HanLP
 
 ```bash
-java -cp libs/hanlp-1.6.0.jar com.hankcs.hanlp.model.perceptron.Main -task CWS -train -reference ../OpenCorpus/pku98/199801.txt -model data/test/perceptron/pku199801/cws.bin
+java -cp libs/hanlp-1.6.0.jar com.hankcs.hanlp.model.perceptron.Main -task CWS -train -reference ../OpenCorpus/pku98/199801.txt -model cws.bin
+
+mkdir -p data/model/perceptron/pku199801
+
+mv -f cws.bin data/model/perceptron/pku199801/cws.bin
 
 ```
 默认情况下，训练的迭代次数为5。           
@@ -81,7 +85,7 @@ simple-199801.txt 即为结果。
 训练集 和开发集都指定为这个文件：               
 
 ```bash
-../LTP/ltp-3.4.0/tools/train/otcws learn  --model test --reference simple-199801.txt --development simple-199801.txt  --max-iter  5
+../LTP/ltp-3.4.0/tools/train/otcws learn  --model model-test --reference simple-199801.txt --development simple-199801.txt  --max-iter  5
 ```
 ### SIGHan2005的MSR测试集
 
@@ -92,9 +96,9 @@ simple-199801.txt 即为结果。
 利用SIGHan2005的脚本生成分数：
 ```bash
 perl icwb2-data/scripts/score icwb2-data/gold/msr_training_words.utf8 \
-    icwb2-data/gold/msr_test_gold.utf8 msr_result.txt > ltp-score.ut8
+    icwb2-data/gold/msr_test_gold.utf8 msr_result.txt > ltp-msr-score.utf8
 ```
-查看ltp-score.ut8 ：                   
+查看ltp-msr-score.utf8 ：                   
 
 ```bash
 === TOTAL TRUE WORDS RECALL:	0.886
@@ -108,7 +112,7 @@ perl icwb2-data/scripts/score icwb2-data/gold/msr_training_words.utf8 \
 ```
 ```bash
 perl icwb2-data/scripts/score icwb2-data/gold/pku_training_words.utf8  \
-    icwb2-data/gold/pku_test_gold.utf8  pku_result.txt > pku-score.ut8
+    icwb2-data/gold/pku_test_gold.utf8  pku_result.txt > ltp-pku-score.ut8
 
 ```
 
@@ -121,18 +125,20 @@ perl icwb2-data/scripts/score icwb2-data/gold/pku_training_words.utf8  \
 
 MSR测试集：
 
-|       | RECALL | PRECISION | F1    |
-| ----- | ------ | --------- | ----- |
-| HanLP | 0.870  | 0.848     | 0.859 |
-| LTP   | 0.886  | 0.854     | 0.870 |
-
+|迭代次数 |  | RECALL | PRECISION | F1    |
+|---| ---- | ------ | --------- | ----- |
+|5 | HanLP | 0.870  | 0.848     | 0.859 |
+|5 | LTP   | 0.886  | 0.854     | 0.870 |
+|50| HanLP | 0.881  | 0.855     | 0.868 |
+|50| LTP   | 0.888  | 0.859     | 0.873 |
 PKU测试集：
 
-|       | RECALL | PRECISION | F1    |
-| ----- | ------ | --------- | ----- |
-| HanLP | 0.894  | 0.915     | 0.905 |
-| LTP   | 0.928  | 0.939     | 0.934 |
-
+|迭代次数|   | RECALL | PRECISION | F1    |
+|---| ---- | ------ | --------- | ----- |
+|5 | HanLP | 0.894  | 0.915     | 0.905 |
+|5 | LTP   | 0.928  | 0.939     | 0.934 |
+|50| HanLP | 0.908  | 0.922     | 0.915 |
+|50| LTP   | 0.931  | 0.946     | 0.939 |
 
 
 ### 性能测试
@@ -145,7 +151,7 @@ PKU测试集：
 
 #### HanLP
 ```bash
-java -cp test-hanlp-ltp-1.0-SNAPSHOT.jar com.zongwu33.test.PerformanceTest  strict-utf8-booken.txt  
+java -cp test-hanlp-ltp-1.0-SNAPSHOT.jar com.zongwu33.test.PerformanceTest  ../NLP/strict-utf8-booken.txt  
 ```
 ```
 init model: 313 ms
